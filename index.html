@@ -70,8 +70,7 @@
             z-index: 1000; text-align: center; visibility: hidden; opacity: 0; transition: 0.5s; width: 85%; max-width: 400px;
         }
         #selection-notice.show { visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        .confetti-icon { font-size: 50px; display: block; margin-bottom: 10px; animation: bounce 1s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .notice-score { font-size: 2.2rem; font-weight: 700; color: var(--primary); display: block; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -79,9 +78,10 @@
 <div id="custom-alert">⚠️ Please complete this field!</div>
 
 <div id="selection-notice">
-    <span class="confetti-icon">🎉</span>
+    <span class="notice-score" id="popup-score">0%</span>
     <h2 style="color: var(--success);">Congratulations!</h2>
-    <p id="sel-text" style="font-weight: 700; margin: 10px 0; font-size: 1.1rem;"></p>
+    <p id="sel-text" style="font-weight: 700; margin-top: 10px; font-size: 1.1rem;"></p>
+    <p id="mentor-text" style="font-weight: 600; color: #636e72; margin-bottom: 10px; font-size: 0.95rem;"></p>
     <p>You are selected for the next class </p>
     <p style="font-weight: 700; color: var(--primary); font-size: 1.2rem; background: #eee; padding: 8px; border-radius: 10px; margin: 10px 0;">[ Forever Marketing Plan ] 📈</p>
     <button class="btn" onclick="closeNotice()" style="width: 100%; margin-top: 15px;">Get Started</button>
@@ -152,10 +152,10 @@
     };
 
     const quizData = [
-        { q_en: "1. 'World largest aloevera & bee company' - related to:", q_bn: "১. 'বিশ্বের বৃহত্তম অ্যালোভেরা এবং মৌমাছি কোম্পানি' - কোনটির সাথে সম্পর্কিত:", a_en: ["Himalaya", "Patanjali", "Forever Living"], a_bn: ["হিমালয়", "পতঞ্জলি", "ফরএভার লিভিং"], ans: 2 },
+        { q_en: "1. 'World largest aloevera & bee company' - related to:", q_bn: "১. 'বিশ্বের বৃহত্তম অ্যালোভেরা এবং মৌমাছি কোম্পানি' - কোনটির সাথে সম্পর্কিত:", a_en: ["Himalaya", "Patanjali", "Forever Living Product"], a_bn: ["হিমালয়", "পতঞ্জলি", "ফরএভার লিভিং প্রোডাক্ট"], ans: 2 },
         { q_en: "2. What do you think about 'Multi-Billion Business Turnover' of FLP generates annually?", q_bn: "২. FLP প্রতি বছর যে 'মাল্টি-বিলিয়ন বিজনেস টার্নওভার' করে সে সম্পর্কে আপনি কী মনে করেন?", a_en: ["Consistent business growth", "Sometimes rising & decreasing", "Downfall of market"], a_bn: ["ধারাবাহিক ব্যবসায়িক বৃদ্ধি", "মাঝে মাঝে উত্থান ও পতন", "বাজারের পতন"], ans: 0 },
         { q_en: "3. 'Vertically Integrated' means", q_bn: "৩. 'ভার্টিক্যালি ইন্টিগ্রেটেড' মানে কী?", a_en: ["Only raw materials supply", "Own 'plant to product' process", "Manufacturing only"], a_bn: ["শুধুমাত্র কাঁচামাল সরবরাহ", "নিজস্ব 'গাছ থেকে পণ্য' তৈরির প্রক্রিয়া", "শুধুমাত্র উৎপাদন"], ans: 1 },
-        { q_en: "4. 'The power of Forever, is the power of love' - quoted by", q_bn: "৪. 'ফরএভারের শক্তি হলো ভালোবাসার শক্তি' - উক্তিটি কার?", a_en: ["Rex Maughan, CEO", "Gregg Maughan, President", "Navaz Ghaswala, Founding Member"], a_bn: ["রেক্স মন, সিইও", "গ্রেগ মন, প্রেসিডেন্ট", "নাওয়াজ ঘাসওয়ালা, প্রতিষ্ঠাতা সদস্য"], ans: 0 },
+        { q_en: "4. 'The power of Forever, is the power of love' - quoted by", q_bn: "৪. 'ফরএভারের শক্তি হলো ভালোবাসার শক্তি' - উক্তিটি কার?", a_en: ["Rex Maughan, CEO", "Gregg Maughan, President", "Navaz Ghaswala, Founding Member"], a_bn: ["রেক্স মন, সিইও", "গ্রেগ মন, প্রেসিডেন্ট", "নাওয়াজ ঘাসোওয়ালা, প্রতিষ্ঠাতা সদস্য"], ans: 0 },
         { q_en: "5. What brings Forever Living in market?", q_bn: "৫. ফরএভার লিভিং বাজারে কী নিয়ে আসে?", a_en: ["The number 1", "The only 1", "Both of them"], a_bn: ["এক নম্বর (The number 1)", "একমাত্র (The only 1)", "উভয়ই"], ans: 2 },
         { q_en: "6. What's the most net worth industry below?", q_bn: "৬. নিচের কোন শিল্পটির নেট ওয়ার্থ সবচেয়ে বেশি?", a_en: ["Textile Industry", "Travel & Tourism Industry", "Wellness Industry"], a_bn: ["টেক্সটাইল ইন্ডাস্ট্রি", "ভ্রমণ ও পর্যটন ইন্ডাস্ট্রি", "ওয়েলনেস ইন্ডাস্ট্রি"], ans: 2 },
         { q_en: "7. Forever Living deals with:", q_bn: "৭. ফরএভার লিভিং কোন মডেল নিয়ে কাজ করে:", a_en: ["Direct Business Model, Time Leverage, Passive Income", "Traditional Business, Passive Income", "Employee, Active Income"], a_bn: ["ডাইরেক্ট বিজনেস মডেল, টাইম লিভারেজ, প্যাসিভ ইনকাম", "প্রচলিত ব্যবসা, প্যাসিভ ইনকাম", "কর্মচারী, অ্যাক্টিভ ইনকাম"], ans: 0 },
@@ -256,7 +256,9 @@
 
         if(pct >= 50) {
             setTimeout(() => {
+                document.getElementById('popup-score').innerText = pct + "%";
                 document.getElementById('sel-text').innerText = "Dear, " + document.getElementById('userName').value;
+                document.getElementById('mentor-text').innerText = "Mentor: " + document.getElementById('mentorName').value;
                 document.getElementById('selection-notice').classList.add('show');
             }, 1000);
         }
