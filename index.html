@@ -12,144 +12,156 @@
             --primary: #6c5ce7;
             --success: #00b894;
             --danger: #d63031;
-            --warning: #f1c40f;
             --bg: #f0f3f7;
-            --text: #2d3436;
             --shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
             --inner-shadow: inset 6px 6px 12px #c1c9d7, inset -6px -6px 12px #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
         body { font-family: 'Poppins', 'Hind Siliguri', sans-serif; background: var(--bg); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
-        .container { background: var(--bg); width: 100%; max-width: 500px; border-radius: 30px; box-shadow: var(--shadow); padding: 30px; text-align: center; position: relative; }
         
-        #custom-alert {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
-            background: #ff7675; color: white; padding: 12px 25px; border-radius: 50px;
-            font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 2000;
-            transition: 0.5s; opacity: 0;
-        }
+        .container { background: var(--bg); width: 100%; max-width: 550px; border-radius: 30px; box-shadow: var(--shadow); padding: 35px; text-align: center; position: relative; }
+        
+        #custom-alert { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #ff7675; color: white; padding: 12px 25px; border-radius: 50px; z-index: 2000; transition: 0.5s; opacity: 0; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
         #custom-alert.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        .header h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; text-transform: uppercase; }
-        .lang-box { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .lang-btn { padding: 8px 15px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; background: var(--bg); box-shadow: var(--shadow); }
+        .header h2 { color: var(--primary); font-size: 1.3rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .lang-btn { padding: 8px 18px; border-radius: 12px; border: none; cursor: pointer; background: var(--bg); box-shadow: var(--shadow); font-weight: 700; color: #636e72; font-size: 0.85rem; }
         .lang-btn.active { box-shadow: var(--inner-shadow); color: var(--primary); }
         
-        .input-box { text-align: left; margin-bottom: 15px; }
-        .input-box label { font-size: 0.75rem; font-weight: 700; color: #7f8c8d; margin-left: 10px; }
-        .neumorph-input { width: 100%; padding: 12px; border: none; background: var(--bg); border-radius: 12px; box-shadow: var(--inner-shadow); outline: none; margin-top: 5px; }
-        .neumorph-input.error { border: 1px solid var(--danger); animation: shake 0.3s; }
+        .neumorph-input { width: 100%; padding: 15px; border: none; background: var(--bg); border-radius: 15px; box-shadow: var(--inner-shadow); outline: none; margin-top: 10px; font-family: inherit; font-size: 0.95rem; }
+        
+        .btn { padding: 15px; border: none; border-radius: 18px; cursor: pointer; font-weight: 700; background: var(--bg); box-shadow: var(--shadow); color: var(--primary); width: 100%; margin-top: 15px; font-size: 1rem; text-decoration: none; display: block; }
+        .btn:active { box-shadow: var(--inner-shadow); transform: scale(0.98); }
+        .btn-start { background: var(--primary); color: white; }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .btn { padding: 15px; border: none; border-radius: 15px; cursor: pointer; font-weight: 700; background: var(--bg); box-shadow: var(--shadow); color: var(--primary); }
-        .btn-start { width: 100%; background: var(--primary); color: white; margin-top: 10px; text-decoration: none; display: inline-block; }
         .hidden { display: none; }
-        .option { padding: 15px; margin-bottom: 12px; border-radius: 12px; cursor: pointer; background: var(--bg); box-shadow: var(--shadow); text-align: left; font-size: 0.95rem; }
-        .option.selected { box-shadow: var(--inner-shadow); color: var(--primary); font-weight: 700; border-left: 5px solid var(--primary); }
-        .nav-btns { display: flex; justify-content: space-between; margin-top: 20px; gap: 15px; }
+        .option { padding: 15px; margin-bottom: 15px; border-radius: 15px; cursor: pointer; background: var(--bg); box-shadow: var(--shadow); text-align: left; font-size: 0.95rem; font-weight: 500; color: #2d3436; border: 2px solid transparent; }
+        .option.selected { box-shadow: var(--inner-shadow); color: var(--primary); font-weight: 700; border-left: 6px solid var(--primary); }
 
-        /* Percentage Circle */
-        .score-circle { width: 120px; height: 120px; margin: 20px auto; position: relative; }
-        .score-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+        /* Recovery Quiz Card Styles */
+        .quiz-card { background: var(--bg); border-radius: 20px; box-shadow: var(--inner-shadow); padding: 20px; margin-bottom: 20px; text-align: left; }
+        .quiz-question { font-size: 1rem; font-weight: 600; color: #2d3436; margin-bottom: 12px; }
+        .options-group { display: flex; gap: 15px; }
+        .option-btn { flex: 1; padding: 12px; border-radius: 12px; border: none; cursor: pointer; background: var(--bg); box-shadow: var(--shadow); font-weight: 600; color: #636e72; font-size: 0.9rem; text-align: center; }
+        .option-btn.selected { box-shadow: var(--inner-shadow); color: var(--primary); font-weight: 700; border: 2px solid var(--primary); }
+
+        .score-circle { width: 140px; height: 140px; margin: 25px auto; position: relative; }
+        .score-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 1.8rem; font-weight: 800; color: var(--primary); }
         svg { transform: rotate(-90deg); width: 100%; height: 100%; }
-        circle { fill: none; stroke-width: 8; stroke: #dfe6e9; stroke-dasharray: 283; }
-        .progress-bar { stroke: var(--primary); stroke-dashoffset: 283; transition: 1.5s ease-out; stroke-linecap: round; }
+        circle { fill: none; stroke-width: 10; stroke: #dfe6e9; stroke-dasharray: 283; }
+        .progress-bar { stroke: var(--primary); stroke-dashoffset: 283; transition: 1.8s cubic-bezier(0.4, 0, 0.2, 1); stroke-linecap: round; }
 
-        .review-container { text-align: left; margin-top: 25px; max-height: 250px; overflow-y: auto; padding-right: 10px; border-top: 1px solid #ddd; padding-top: 15px; }
-        .review-item { padding: 10px; margin-bottom: 10px; border-radius: 10px; box-shadow: var(--inner-shadow); font-size: 0.85rem; }
+        .review-container { text-align: left; margin-top: 30px; max-height: 280px; overflow-y: auto; padding: 10px; border-top: 2px solid #e0e0e0; }
+        .review-item { padding: 15px; margin-bottom: 15px; border-radius: 15px; box-shadow: var(--inner-shadow); font-size: 0.85rem; line-height: 1.5; }
 
-        #selection-notice {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
-            background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 1000; text-align: center; visibility: hidden; opacity: 0; transition: 0.5s; width: 85%; max-width: 400px;
-        }
-        #selection-notice.show { visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        .notice-score { font-size: 2.2rem; font-weight: 700; color: var(--primary); display: block; margin-bottom: 10px; }
+        #selection-notice, #mentor-notice { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.7); background: white; padding: 35px 30px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); z-index: 1000; text-align: center; visibility: hidden; opacity: 0; transition: 0.5s; width: 92%; max-width: 440px; }
+        #selection-notice.show, #mentor-notice.show { visibility: visible; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        
+        textarea { resize: none; }
     </style>
 </head>
 <body>
 
-<div id="custom-alert">⚠️ Please complete this field!</div>
+<div id="custom-alert">⚠️ Please complete this!</div>
 
+<!-- Selection Notice Popup -->
 <div id="selection-notice">
-    <span class="notice-score" id="popup-score">0%</span>
-    <h2 style="color: var(--success);">Congratulations!</h2>
-    <p id="sel-text" style="font-weight: 700; margin-top: 10px; font-size: 1.1rem;"></p>
-    <p id="mentor-text" style="font-weight: 600; color: #636e72; margin-bottom: 10px; font-size: 0.95rem;"></p>
-    <p>You are selected for the next class </p>
-    <p style="font-weight: 700; color: var(--primary); font-size: 1.2rem; background: #eee; padding: 8px; border-radius: 10px; margin: 10px 0;">[ Forever Marketing Plan ] 📈</p>
-    <button class="btn" onclick="closeNotice()" style="width: 100%; margin-top: 15px;">Get Started</button>
+    <div style="background: var(--primary); color: white; padding: 10px 15px; border-radius: 14px; font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; box-shadow: var(--shadow);">
+        TEAM C [JUWEL RANA SIR] 🚀
+    </div>
+    
+    <div style="font-weight: 700; color: #2d3436; font-size: 0.95rem; margin-bottom: 15px; background: #f0f3f7; padding: 8px; border-radius: 10px; box-shadow: var(--inner-shadow);">
+        Industry Profile Assessment
+    </div>
+    
+    <div id="popup-score-badge" style="font-size: 3.2rem; font-weight: 800; color: var(--primary); margin: 12px 0; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">0%</div>
+
+    <h2 style="color: var(--success); font-weight: 700; font-size: 1.5rem; margin-bottom: 8px;" id="notice-title">Congratulations🎉</h2>
+    <p id="sel-text" style="font-weight: 600; margin: 10px 0; color: #2d3436; font-size: 1.15rem;"></p>
+    <div id="popup-mentor-display" style="font-weight: 600; color: #636e72; font-size: 0.95rem; margin-bottom: 12px;"></div>
+    <p id="notice-sub" style="font-size: 0.95rem; color: #636e72; margin-bottom: 5px;">You are successfully selected for:</p>
+    <div style="font-weight: 700; color: var(--primary); font-size: 1.05rem; background: #f0f3f7; padding: 12px; border-radius: 14px; margin: 12px 0; box-shadow: var(--inner-shadow);">
+        [ Industry Profile Assessment ] 🚀
+    </div>
+    <button class="btn" id="notice-btn" onclick="closeNotice()" style="background: var(--success); color: white; box-shadow: none; margin-top: 15px; font-size: 1.05rem; padding: 16px;">Proceed to Next Step</button>
+</div>
+
+<!-- Mentor Info Modal -->
+<div id="mentor-notice">
+    <div style="font-size: 50px; margin-bottom: 10px;">💡</div>
+    <h2 style="color: var(--success); font-weight: 700; margin-bottom: 15px;" id="mentor-modal-title">মেন্টর কে?</h2>
+    <p style="font-weight: 500; color: #2d3436; line-height: 1.6; font-size: 0.95rem; text-align: justify;" id="mentor-modal-desc">
+        যিনি আপনাকে গ্রুপে অ্যাড করেছেন এবং কাজ সম্পর্কে বিস্তারিত জানিয়েছেন, তিনিই আপনার মেন্টর। তিনি আপনাকে কাজ বুঝতে, শিখতে এবং সামনে এগিয়ে যেতে সহযোগিতা করবেন।
+    </p>
+    <button class="btn" onclick="closeMentorNotice()" style="background: var(--success); color: white; box-shadow: none; margin-top: 20px;" id="mentor-modal-btn">বুঝেছি</button>
 </div>
 
 <div class="container">
     <div class="header">
-        <h2 style="font-size: 1.2rem;">Industry Profile Assessment</h2>
-        <div class="lang-box">
-            <button class="lang-btn active" onclick="setLang('en')">English</button>
-            <button class="lang-btn" onclick="setLang('bn')">বাংলা</button>
+        <h2 id="main-title">Industry Profile Assessment</h2>
+        <div style="display: flex; justify-content: center; gap: 12px;">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">English</button>
+            <button class="lang-btn" id="btn-bn" onclick="setLang('bn')">বাংলা</button>
         </div>
     </div>
 
     <div id="welcome">
-        <div style="margin-bottom: 5px; font-weight: 700; color: var(--primary); font-size: 1.1rem;">Provided by Juwel Rana Sir</div>
-        <div style="margin-bottom: 25px; font-size: 0.8rem; color: #636e72; font-weight: 600; line-height: 1.4;">
-            Corporate Trainer - Co Founder - Assistant Manager
+        <div style="margin-top: 10px;">
+            <h3 style="color: var(--primary); font-size: 1.2rem;">Provided by Juwel Rana Sir</h3>
+            <p id="trainer-desc" style="font-size: 0.8rem; color: #7f8c8d; font-weight: 600; margin-bottom: 25px;">Corporate Trainer - Co Founder - Assistant Manager</p>
         </div>
-        
-        <div class="input-box">
-            <label id="label-name">FULL NAME</label>
+        <div style="text-align: left; margin-bottom: 15px;">
+            <label id="lbl-name" style="font-size: 0.75rem; font-weight: 700; color: #a4b0be; margin-left: 10px;">FULL NAME</label>
             <input type="text" id="userName" class="neumorph-input" placeholder="Type your name...">
         </div>
-        <div class="input-box">
-            <label id="label-mentor">MENTOR NAME</label>
-            <input type="text" id="mentorName" class="neumorph-input" placeholder="Type mentor name...">
+        <div style="text-align: left; margin-bottom: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 10px; margin-right: 10px;">
+                <label id="lbl-mentor" style="font-size: 0.75rem; font-weight: 700; color: #a4b0be;">MENTOR NAME</label>
+                <span id="mentor-help-link" onclick="forceOpenMentorNotice()" style="font-size: 0.75rem; font-weight: 700; color: var(--success); cursor: pointer; text-decoration: underline;">Who is your mentor?</span>
+            </div>
+            <input type="text" id="mentorName" class="neumorph-input" placeholder="Type mentor name..." onclick="openMentorNotice()">
         </div>
-        <button class="btn btn-start" onclick="startQuiz()">START ASSESSMENT</button>
+        <button class="btn btn-start" id="start-btn" onclick="startQuiz()">START ASSESSMENT</button>
     </div>
 
+    <!-- Main Quiz Container -->
     <div id="quiz" class="hidden">
-        <p id="progress" style="font-weight: 700; color: var(--primary); margin-bottom: 10px;"></p>
-        <h3 id="question" style="margin-bottom: 20px; font-size: 1rem;"></h3>
+        <p id="progress" style="font-weight: 700; color: var(--primary); font-size: 0.9rem; margin-bottom: 15px;"></p>
+        <h3 id="question" style="margin-bottom: 25px; font-size: 1.05rem; line-height: 1.4; color: #2d3436;"></h3>
         <div id="options"></div>
-        <div class="nav-btns">
-            <button class="btn" id="prevBtn" onclick="prev()"><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="btn" style="flex:1" id="nextBtn" onclick="next()">NEXT</button>
+        <div style="display: flex; gap: 15px; margin-top: 25px;">
+            <button class="btn" id="prevBtn" onclick="prev()" style="width: 25%;"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="btn" id="nextBtn" onclick="next()" style="flex:1">NEXT</button>
         </div>
     </div>
 
+    <!-- Recovery Quiz Container -->
+    <div id="recovery-quiz" class="hidden">
+        <h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 20px; text-align: left;" id="recovery-header-title">Recovery Assessment</h3>
+        <div id="recovery-list"></div>
+        <button class="btn btn-start" id="submit-recovery-btn" onclick="submitRecoveryQuiz()">SUBMIT ASSESSMENT</button>
+    </div>
+
+    <!-- Result Container -->
     <div id="result" class="hidden">
-        <h2 id="res-title">Assessment Result</h2>
-        
+        <h2 id="result-title" style="font-size: 1.3rem; color: var(--primary);">Assessment Result</h2>
         <div class="score-circle">
-            <svg viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="45"></circle>
-                <circle id="ring" class="progress-bar" cx="50" cy="50" r="45"></circle>
-            </svg>
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45"></circle><circle id="ring" class="progress-bar" cx="50" cy="50" r="45"></circle></svg>
             <div class="score-text" id="pctText">0%</div>
         </div>
-        <p style="font-weight: 600; color: #636e72; margin-bottom: 15px;">Your Score Percentage</p>
-
+        <p id="score-label" style="font-weight: 600; color: #636e72; font-size: 0.9rem;">Your Score Percentage</p>
         <div id="review-list" class="review-container"></div>
-        <a href="https://m.me/YOUR_PAGE_ID" class="btn btn-start" style="margin-top: 20px;">Contact Mentor</a>
+        <a href="https://www.facebook.com/iloveyoumyisrat" target="_blank" class="btn btn-start" id="support-btn" style="margin-top: 20px;">Support</a>
     </div>
 </div>
 
 <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZl3SxU47TjifRO2TASvJPjUjeUvlzMcXuOp5lLOpDme3tr8pt_vVrQnoKg6SvnEpFSw/exec";
-    let currentLang = 'en';
-    let currentIdx = 0;
-    let userAnswers = [];
-
-    const translations = {
-        en: { start: "START ASSESSMENT", name: "FULL NAME", mentor: "MENTOR NAME", next: "NEXT", finish: "FINISH", alertName: "Please enter your Name!", alertMentor: "Please enter Mentor Name!", alertQuiz: "Please select an answer!" },
-        bn: { start: "কুইজ শুরু করুন", name: "আপনার নাম", mentor: "মেন্টরের নাম", next: "পরবর্তী", finish: "শেষ করুন", alertName: "আপনার নাম লিখুন!", alertMentor: "মেন্টরের নাম লিখুন!", alertQuiz: "একটি উত্তর নির্বাচন করুন!" }
-    };
+    let currentLang = 'en', currentIdx = 0, userAnswers = [];
+    let recoveryAnswers = [null, null, null, null];
+    let mentorNoticeShown = false;
 
     const quizData = [
         { q_en: "1. 'World largest aloevera & bee company' - related to:", q_bn: "১. 'বিশ্বের বৃহত্তম অ্যালোভেরা এবং মৌমাছি কোম্পানি' - কোনটির সাথে সম্পর্কিত:", a_en: ["Himalaya", "Patanjali", "Forever Living Product"], a_bn: ["হিমালয়", "পতঞ্জলি", "ফরএভার লিভিং প্রোডাক্ট"], ans: 2 },
@@ -164,29 +176,113 @@
         { q_en: "10. We're paid on the basis of:", q_bn: "১০. আমাদের কিসের ভিত্তিতে পেমেন্ট করা হয়?", a_en: ["Only selling products typically", "Business Turnover", "None of them"], a_bn: ["সাধারণত শুধু পণ্য বিক্রির ওপর", "বিজনেস টার্নওভারের ওপর", "কোনটিই নয়"], ans: 1 }
     ];
 
+    const recoveryQuizData = [
+        { 
+            q_en: "1. Did you join today's group call?", 
+            q_bn: "১. আজকের গ্রুপ কলে জয়েন করেছেন কি?", 
+            options_en: ["Yes", "No"], 
+            options_bn: ["হ্যাঁ", "না"], 
+            ans: 0 
+        },
+        { 
+            q_en: "2. Did you watch today's class live?", 
+            q_bn: "২. আজকের ক্লাস কি লাইভে করেছেন?", 
+            options_en: ["Yes", "No"], 
+            options_bn: ["হ্যাঁ", "না"], 
+            ans: 0 
+        },
+        { 
+            q_en: "3. Did you send the class screenshot to your mentor?", 
+            q_bn: "৩. ক্লাসের স্ক্রিনশট কি মেন্টরকে দিয়েছেন?", 
+            options_en: ["Yes", "No"], 
+            options_bn: ["হ্যাঁ", "না"], 
+            ans: 0 
+        },
+        { 
+            q_en: "4. Do you respond and react in the group regularly?", 
+            q_bn: "৪. আপনি কি নিয়মিত গ্রুপে রেসপন্স এবং রিঅ্যাক্ট করেন?", 
+            options_en: ["Yes", "No"], 
+            options_bn: ["হ্যাঁ", "না"], 
+            ans: 0 
+        }
+    ];
+
     userAnswers = new Array(quizData.length).fill(null);
 
-    function showAlert(msg) {
-        const alertBox = document.getElementById('custom-alert');
-        alertBox.innerText = msg;
-        alertBox.classList.add('show');
-        setTimeout(() => alertBox.classList.remove('show'), 3000);
+    function setLang(l) {
+        currentLang = l;
+        document.getElementById('btn-en').classList.toggle('active', l==='en');
+        document.getElementById('btn-bn').classList.toggle('active', l==='bn');
+        
+        if(currentLang === 'bn') {
+            document.getElementById('main-title').innerText = "ইন্ডাস্ট্রি প্রোফাইল অ্যাসেসমেন্ট";
+            document.getElementById('lbl-name').innerText = "আপনার পুরো নাম";
+            document.getElementById('userName').placeholder = "আপনার নাম লিখুন...";
+            document.getElementById('lbl-mentor').innerText = "মেন্টরের নাম";
+            document.getElementById('mentor-help-link').innerText = "মেন্টর কে?";
+            document.getElementById('mentorName').placeholder = "মেন্টরের নাম লিখুন...";
+            document.getElementById('start-btn').innerText = "অ্যাসেসমেন্ট শুরু করুন";
+            document.getElementById('nextBtn').innerText = "পরবর্তী";
+            document.getElementById('recovery-header-title').innerText = "রিকভারি অ্যাসেসমেন্ট";
+            document.getElementById('submit-recovery-btn').innerText = "জমা দিন (Submit)";
+            document.getElementById('result-title').innerText = "অ্যাসেসমেন্ট ফলাফল";
+            document.getElementById('score-label').innerText = "আপনার স্কোরের শতকরা হার";
+            document.getElementById('support-btn').innerText = "সাপোর্ট";
+            document.getElementById('notice-title').innerText = "Congratulations🎉";
+            document.getElementById('notice-sub').innerText = "আপনাকে সফলভাবে নির্বাচিত করা হয়েছে:";
+            document.getElementById('notice-btn').innerText = "পরবর্তী ধাপে যান";
+            document.getElementById('mentor-modal-title').innerText = "মেন্টর কে?";
+            document.getElementById('mentor-modal-btn').innerText = "বুঝেছি";
+        } else {
+            document.getElementById('main-title').innerText = "Industry Profile Assessment";
+            document.getElementById('lbl-name').innerText = "FULL NAME";
+            document.getElementById('userName').placeholder = "Type your name...";
+            document.getElementById('lbl-mentor').innerText = "MENTOR NAME";
+            document.getElementById('mentor-help-link').innerText = "Who is your mentor?";
+            document.getElementById('mentorName').placeholder = "Type mentor name...";
+            document.getElementById('start-btn').innerText = "START ASSESSMENT";
+            document.getElementById('nextBtn').innerText = "NEXT";
+            document.getElementById('recovery-header-title').innerText = "Recovery Assessment";
+            document.getElementById('submit-recovery-btn').innerText = "SUBMIT ASSESSMENT";
+            document.getElementById('result-title').innerText = "Assessment Result";
+            document.getElementById('score-label').innerText = "Your Score Percentage";
+            document.getElementById('support-btn').innerText = "Support";
+            document.getElementById('notice-title').innerText = "Congratulations🎉";
+            document.getElementById('notice-sub').innerText = "You are successfully selected for:";
+            document.getElementById('notice-btn').innerText = "Proceed to Next Step";
+            document.getElementById('mentor-modal-title').innerText = "Who is your mentor?";
+            document.getElementById('mentor-modal-btn').innerText = "Got it";
+        }
+
+        if(!document.getElementById('quiz').classList.contains('hidden')) renderQuestion();
+        if(!document.getElementById('recovery-quiz').classList.contains('hidden')) renderRecoveryQuiz();
     }
 
-    function setLang(lang) {
-        currentLang = lang;
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        if(event && event.target) event.target.classList.add('active');
-        document.getElementById('label-name').innerText = translations[lang].name;
-        document.getElementById('label-mentor').innerText = translations[lang].mentor;
-        if(!document.getElementById('quiz').classList.contains('hidden')) renderQuestion();
+    function openMentorNotice() {
+        if (!mentorNoticeShown) {
+            document.getElementById('mentor-notice').classList.add('show');
+            mentorNoticeShown = true;
+        }
+    }
+
+    function forceOpenMentorNotice() {
+        document.getElementById('mentor-notice').classList.add('show');
+    }
+
+    function closeMentorNotice() {
+        document.getElementById('mentor-notice').classList.remove('show');
+    }
+
+    function showAlert(m) {
+        const a = document.getElementById('custom-alert');
+        a.innerText = m; a.classList.add('show');
+        setTimeout(() => a.classList.remove('show'), 3000);
     }
 
     function startQuiz() {
-        const nameInput = document.getElementById('userName');
-        const mentorInput = document.getElementById('mentorName');
-        if(!nameInput.value.trim()) { nameInput.classList.add('error'); showAlert(translations[currentLang].alertName); return; }
-        if(!mentorInput.value.trim()) { mentorInput.classList.add('error'); showAlert(translations[currentLang].alertMentor); return; }
+        if(!document.getElementById('userName').value.trim() || !document.getElementById('mentorName').value.trim()) {
+            return showAlert(currentLang === 'bn' ? "দয়া করে সব ফিল্ড পূরণ করুন!" : "Please fill up all fields!");
+        }
         document.getElementById('welcome').classList.add('hidden');
         document.getElementById('quiz').classList.remove('hidden');
         renderQuestion();
@@ -194,73 +290,154 @@
 
     function renderQuestion() {
         const q = quizData[currentIdx];
-        document.getElementById('progress').innerText = `Question: ${currentIdx + 1} / ${quizData.length}`;
+        document.getElementById('progress').innerText = (currentLang==='en'?"QUESTION: ":"প্রশ্ন: ") + `${currentIdx + 1} / 10`;
         document.getElementById('question').innerText = currentLang === 'en' ? q.q_en : q.q_bn;
         const optBox = document.getElementById('options');
         optBox.innerHTML = "";
-        const opts = currentLang === 'en' ? q.a_en : q.a_bn;
-        opts.forEach((text, i) => {
-            const div = document.createElement('div');
-            div.className = `option ${userAnswers[currentIdx] === i ? 'selected' : ''}`;
-            div.innerText = text;
-            div.onclick = () => { userAnswers[currentIdx] = i; renderQuestion(); };
-            optBox.appendChild(div);
+
+        (currentLang === 'en' ? q.a_en : q.a_bn).forEach((text, i) => {
+            const d = document.createElement('div');
+            d.className = `option ${userAnswers[currentIdx] === i ? 'selected' : ''}`;
+            d.innerText = text; d.onclick = () => { userAnswers[currentIdx] = i; renderQuestion(); };
+            optBox.appendChild(d);
         });
         document.getElementById('prevBtn').style.visibility = currentIdx === 0 ? 'hidden' : 'visible';
-        document.getElementById('nextBtn').innerText = currentIdx === quizData.length - 1 ? translations[currentLang].finish : translations[currentLang].next;
     }
 
     function next() {
-        if(userAnswers[currentIdx] === null) { showAlert(translations[currentLang].alertQuiz); return; }
-        if(currentIdx < quizData.length - 1) { currentIdx++; renderQuestion(); } 
-        else { showResult(); }
+        if(userAnswers[currentIdx] === null) {
+            return showAlert(currentLang === 'bn' ? "একটি উত্তর নির্বাচন করুন!" : "Select an answer!");
+        }
+        
+        if(currentIdx < 9) { 
+            currentIdx++; 
+            renderQuestion(); 
+        } else {
+            // Transition to Recovery Quiz
+            document.getElementById('quiz').classList.add('hidden');
+            document.getElementById('recovery-quiz').classList.remove('hidden');
+            renderRecoveryQuiz();
+        }
     }
 
-    function prev() { if(currentIdx > 0) { currentIdx--; renderQuestion(); } }
+    function prev() { 
+        if(currentIdx > 0) { 
+            currentIdx--; 
+            renderQuestion(); 
+        } 
+    }
 
-    function showResult() {
-        document.getElementById('quiz').classList.add('hidden');
+    function renderRecoveryQuiz() {
+        const listDiv = document.getElementById('recovery-list');
+        listDiv.innerHTML = "";
+
+        recoveryQuizData.forEach((q, index) => {
+            let optionsHtml = "";
+            let opts = currentLang === 'en' ? q.options_en : q.options_bn;
+
+            opts.forEach((optText, optIdx) => {
+                let isSelected = recoveryAnswers[index] === optIdx ? 'selected' : '';
+                optionsHtml += `<button class="option-btn ${isSelected}" onclick="selectRecoveryOption(${index}, ${optIdx})">${optText}</button>`;
+            });
+
+            listDiv.innerHTML += `
+                <div class="quiz-card">
+                    <div class="quiz-question">${currentLang === 'en' ? q.q_en : q.q_bn}</div>
+                    <div class="options-group">${optionsHtml}</div>
+                </div>
+            `;
+        });
+    }
+
+    function selectRecoveryOption(qIdx, optIdx) {
+        recoveryAnswers[qIdx] = optIdx;
+        renderRecoveryQuiz();
+    }
+
+    function submitRecoveryQuiz() {
+        if (recoveryAnswers.includes(null)) {
+            return showAlert(currentLang === 'bn' ? "দয়া করে রিকভারি কুইজের সবগুলো প্রশ্নের উত্তর দিন!" : "Please answer all recovery questions!");
+        }
+
+        document.getElementById('recovery-quiz').classList.add('hidden');
         document.getElementById('result').classList.remove('hidden');
-        let score = 0;
-        let selectedAnswersTexts = [];
-        const revBox = document.getElementById('review-list');
-        revBox.innerHTML = "";
+
+        let originalScore = 0;
+        let finalAnswersForSheet = [];
+        const rev = document.getElementById('review-list'); 
+        rev.innerHTML = "";
+
+        // Calculate Original 10 Questions Score
         userAnswers.forEach((ans, i) => {
-            const isCorrect = ans === quizData[i].ans;
-            if(isCorrect) score++;
-            const userChoiceText = currentLang === 'en' ? quizData[i].a_en[ans] : quizData[i].a_bn[ans];
-            selectedAnswersTexts.push(userChoiceText);
-            const item = document.createElement('div');
-            item.className = "review-item";
-            item.innerHTML = `<b>${currentLang === 'en' ? quizData[i].q_en : quizData[i].q_bn}</b><br><span style="color:${isCorrect ? 'var(--success)' : 'var(--danger)'}">Your: ${userChoiceText}</span>`;
-            revBox.appendChild(item);
+            const q = quizData[i];
+            const isCorrect = (ans === q.ans);
+            let earned = isCorrect ? 10 : 0;
+            
+            let displayAnsText = (currentLang === 'en' ? q.a_en[ans] : q.a_bn[ans]);
+            let correctText = (currentLang === 'en' ? q.a_en[q.ans] : q.a_bn[q.ans]);
+            
+            let choiceLabel = currentLang === 'bn' ? "আপনার পছন্দ:" : "Your Choice:";
+            let correctLabel = currentLang === 'bn' ? "সঠিক উত্তর:" : "Correct:";
+            
+            let statusHtml = `<p style="margin-top:5px;">${choiceLabel} <span style="color:${isCorrect?'var(--success)':'var(--danger)'}; font-weight:700;">${displayAnsText}</span><br>
+            ${correctLabel} <span style="color:var(--success); font-weight:700;">${correctText}</span></p>`;
+            
+            originalScore += earned;
+            finalAnswersForSheet.push(displayAnsText);
+            rev.innerHTML += `<div class="review-item"><b>${i+1}. ${currentLang=='en'?q.q_en:q.q_bn}</b>${statusHtml}</div>`;
         });
 
-        let pct = Math.round((score / quizData.length) * 100);
+        // Calculate Recovery Marks (Each Yes = 10%, max 40%)
+        let recoveryMarks = 0;
+        recoveryAnswers.forEach((ans, i) => {
+            const rq = recoveryQuizData[i];
+            let isYes = (ans === 0);
+            if(isYes) recoveryMarks += 10;
+
+            let opts = currentLang === 'en' ? rq.options_en : rq.options_bn;
+            let choiceLabel = currentLang === 'bn' ? "আপনার পছন্দ:" : "Your Choice:";
+            let recTitle = currentLang === 'en' ? rq.q_en : rq.q_bn;
+            
+            finalAnswersForSheet.push(opts[ans]);
+
+            rev.innerHTML += `
+                <div class="review-item">
+                    <b>[Recovery] ${recTitle}</b>
+                    <p style="margin-top:5px;">
+                        ${choiceLabel} <span style="color:${isYes ? 'var(--success)' : 'var(--danger)'}; font-weight:700;">${opts[ans]}</span>
+                        <br><span>[Recovery Earned: ${isYes ? '+10%' : '0%'}]</span>
+                    </p>
+                </div>
+            `;
+        });
+
+        // Final Score calculation bounded at 100%
+        let finalScore = Math.min(100, originalScore + recoveryMarks);
+
+        document.getElementById('pctText').innerText = finalScore + "%";
+        document.getElementById('ring').style.strokeDashoffset = 283 - (283 * finalScore / 100);
+
+        const userNameVal = document.getElementById('userName').value;
+        const mentorNameVal = document.getElementById('mentorName').value;
+
+        fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: JSON.stringify({ 
+                name: userNameVal, 
+                mentor: mentorNameVal, 
+                originalScore: originalScore + "%",
+                recoveryMarks: recoveryMarks + "%",
+                percentage: finalScore + "%", 
+                answers: finalAnswersForSheet 
+            }) 
+        });
         
-        // Update Percentage UI
-        document.getElementById('pctText').innerText = pct + "%";
-        const offset = 283 - (283 * pct / 100);
-        document.getElementById('ring').style.strokeDashoffset = offset;
-
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify({
-                name: document.getElementById('userName').value,
-                mentor: document.getElementById('mentorName').value,
-                percentage: pct + "%",
-                answers: selectedAnswersTexts
-            })
-        });
-
-        if(pct >= 50) {
-            setTimeout(() => {
-                document.getElementById('popup-score').innerText = pct + "%";
-                document.getElementById('sel-text').innerText = "Dear, " + document.getElementById('userName').value;
-                document.getElementById('mentor-text').innerText = "Mentor: " + document.getElementById('mentorName').value;
-                document.getElementById('selection-notice').classList.add('show');
-            }, 1000);
+        if(finalScore >= 50) {
+            document.getElementById('sel-text').innerText = (currentLang === 'bn' ? "প্রিয় " : "Dear ") + userNameVal + "!";
+            document.getElementById('popup-score-badge').innerText = finalScore + "%";
+            document.getElementById('popup-mentor-display').innerText = (currentLang === 'bn' ? "মেন্টর: " : "Mentor: ") + mentorNameVal;
+            setTimeout(() => document.getElementById('selection-notice').classList.add('show'), 1000);
         }
     }
 
